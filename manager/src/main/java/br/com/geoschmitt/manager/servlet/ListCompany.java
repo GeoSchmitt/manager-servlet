@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,15 +26,9 @@ public class ListCompany extends HttpServlet {
 		List<Company> list = db.getCompany();
 		PrintWriter out = res.getWriter();
 		
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<ul>");
-		for(Company company : list) {
-			out.println("<li>" + company.getNome() + "</li>");
-		}
-		out.println("</ul>");
-		out.println("</body>");
-		out.println("</html>");
+		RequestDispatcher rd = req.getRequestDispatcher("/listCompany.jsp");
+		req.setAttribute("listCompany", list);
+		rd.forward(req, res);
 	}
 
 }

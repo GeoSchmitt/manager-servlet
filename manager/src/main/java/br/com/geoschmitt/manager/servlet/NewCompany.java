@@ -3,6 +3,7 @@ package br.com.geoschmitt.manager.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,11 +28,11 @@ public class NewCompany extends HttpServlet {
 		Database db = new Database();
 		db.add(company);
 		
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<h1>New Company " + companyName + " Success</h1>");
-		out.println("</body>");
-		out.println("</html>");
+		//mandando pro JSP
+		RequestDispatcher rd = req.getRequestDispatcher("/newCompanyCreated.jsp");
+		req.setAttribute("company", company.getNome());
+		rd.forward(req, res);
+		
 	}
 
 }

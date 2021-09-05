@@ -9,13 +9,13 @@ public class Database {
 	
 	static {
 		Company company = new Company();
-		company.setNome("company1");
+		company.setName("company1");
 		Database.list.add(company);
 		Company company2 = new Company();
-		company2.setNome("company2");
+		company2.setName("company2");
 		Database.list.add(company2);
 		Company company3 = new Company();
-		company3.setNome("company3");
+		company3.setName("company3");
 		Database.list.add(company3);
 	}
 	

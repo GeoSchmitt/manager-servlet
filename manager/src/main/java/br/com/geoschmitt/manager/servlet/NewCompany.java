@@ -2,6 +2,9 @@ package br.com.geoschmitt.manager.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,15 +25,24 @@ public class NewCompany extends HttpServlet {
 		System.out.println("Success");
 		PrintWriter out = res.getWriter();
 		String companyName = req.getParameter("companyName");
+		Date date = null;
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			date = sdf.parse(req.getParameter("date"));
+		} catch (ParseException e) {
+			throw new ServletException(e); 
+		}
+	
 		Company company = new Company();
-		company.setNome(companyName);
+		company.setName(companyName);
+		company.setDate(date);
 		
 		Database db = new Database();
 		db.add(company);
 		
 		//mandando pro JSP
 		RequestDispatcher rd = req.getRequestDispatcher("/newCompanyCreated.jsp");
-		req.setAttribute("company", company.getNome());
+		req.setAttribute("company", company.getName());
 		rd.forward(req, res);
 		
 	}

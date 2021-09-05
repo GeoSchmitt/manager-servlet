@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class newCompanyServlet
+ * Servlet implementation class NewCompanyServlet
  */
 @WebServlet("/newCompany")
-public class newCompanyServlet extends HttpServlet {
+public class NewCompany extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -21,6 +21,12 @@ public class newCompanyServlet extends HttpServlet {
 		System.out.println("Success");
 		PrintWriter out = res.getWriter();
 		String companyName = req.getParameter("companyName");
+		Company company = new Company();
+		company.setNome(companyName);
+		
+		Database db = new Database();
+		db.add(company);
+		
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<h1>New Company " + companyName + " Success</h1>");

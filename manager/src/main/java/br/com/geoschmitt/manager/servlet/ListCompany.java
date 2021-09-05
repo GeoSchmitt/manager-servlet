@@ -26,6 +26,7 @@ public class ListCompany extends HttpServlet {
 		List<Company> list = db.getCompany();
 		PrintWriter out = res.getWriter();
 		
+		//JSP
 		RequestDispatcher rd = req.getRequestDispatcher("/listCompany.jsp");
 		req.setAttribute("listCompany", list);
 		rd.forward(req, res);

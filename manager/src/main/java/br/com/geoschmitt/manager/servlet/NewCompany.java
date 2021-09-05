@@ -40,10 +40,12 @@ public class NewCompany extends HttpServlet {
 		Database db = new Database();
 		db.add(company);
 		
+		res.sendRedirect("listCompany");
+		
 		//mandando pro JSP
-		RequestDispatcher rd = req.getRequestDispatcher("/newCompanyCreated.jsp");
-		req.setAttribute("company", company.getName());
-		rd.forward(req, res);
+		//RequestDispatcher rd = req.getRequestDispatcher("/listCompany");
+		//req.setAttribute("company", company.getName());
+		//rd.forward(req, res);
 		
 	}
 

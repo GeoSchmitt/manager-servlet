@@ -20,7 +20,7 @@ public class ListCompany extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		Database db = new Database();
 		List<Company> list = db.getCompany();
